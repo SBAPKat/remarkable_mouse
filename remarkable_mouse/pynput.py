@@ -31,7 +31,7 @@ wacom_height = 20967
 
 # remap wacom coordinates to screen coordinates
 def remap(x, y, wacom_width, wacom_height, monitor_width,
-          monitor_height, mode, orientation):
+          monitor_height, mode, orientation? sensitivity):
 
     if orientation == 'bottom':
         y = wacom_height - y
@@ -64,7 +64,7 @@ def remap(x, y, wacom_width, wacom_height, monitor_width,
     )
 
 
-def read_tablet(rm_inputs, *, orientation, monitor_num, region, threshold, mode):
+def read_tablet(rm_inputs, *, orientation, monitor_num, region, threshold, mode, sensitivity):
     """Loop forever and map evdev events to mouse
 
     Args:
@@ -125,7 +125,7 @@ def read_tablet(rm_inputs, *, orientation, monitor_num, region, threshold, mode)
                     x, y,
                     wacom_width, wacom_height,
                     monitor.width, monitor.height,
-                    mode, orientation
+                    mode, orientation, sensitivity
                 )
                 mouse.move(
                     monitor.x + mapped_x - mouse.position[0],
