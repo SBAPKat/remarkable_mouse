@@ -37,7 +37,6 @@ def open_rm_inputs(*, address, key, password):
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 
     pkey = None
-    password = None
 
     agent = paramiko.agent.Agent()
 
