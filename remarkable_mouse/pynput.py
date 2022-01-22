@@ -31,7 +31,7 @@ wacom_height = 20967
 
 # remap wacom coordinates to screen coordinates
 def remap(x, y, wacom_width, wacom_height, monitor_width,
-          monitor_height, mode, orientation? sensitivity):
+          monitor_height, mode, orientation, sensitivity):
 
     if orientation == 'bottom':
         y = wacom_height - y
@@ -59,8 +59,8 @@ def remap(x, y, wacom_width, wacom_height, monitor_width,
         raise NotImplementedError
 
     return (
-        scaling_x * (x - (wacom_width - monitor_width / scaling_x) / 2),
-        scaling_y * (y - (wacom_height - monitor_height / scaling_y) / 2)
+        scaling_x * (x - (wacom_width - monitor_width / scaling_x) / 2)* sensitivity,
+        scaling_y * (y - (wacom_height - monitor_height / scaling_y) / 2)* sensitivity
     )
 
 
